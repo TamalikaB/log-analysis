@@ -1,0 +1,21 @@
+Nov 23 10:01:21 server1 sshd[12345]: Failed password for invalid user admin from 192.168.1.10 port 54321 ssh2
+Nov 23 10:01:35 server1 sshd[12346]: Failed password for root from 192.168.1.10 port 54322 ssh2
+Nov 23 10:02:01 server1 sshd[12347]: Failed password for root from 192.168.1.10 port 54323 ssh2
+Nov 23 10:02:15 server1 sshd[12348]: Failed password for root from 192.168.1.10 port 54324 ssh2
+Nov 23 10:02:30 server1 sshd[12349]: Failed password for root from 192.168.1.10 port 54325 ssh2
+Nov 23 10:02:45 server1 sshd[12350]: Failed password for root from 192.168.1.10 port 54326 ssh2
+Nov 23 10:03:10 server1 sshd[12351]: Accepted password for root from 192.168.1.10 port 54327 ssh2
+
+Nov 23 11:15:05 server1 sshd[13001]: Failed password for user1 from 203.0.113.5 port 50001 ssh2
+Nov 23 11:16:20 server1 sshd[13002]: Failed password for user1 from 203.0.113.5 port 50002 ssh2
+Nov 23 11:17:35 server1 sshd[13003]: Accepted password for user1 from 203.0.113.5 port 50003 ssh2
+
+Nov 23 12:00:01 server1 sshd[14001]: Failed password for invalid user test from 198.51.100.10 port 60001 ssh2
+Nov 23 12:00:20 server1 sshd[14002]: Failed password for invalid user test from 198.51.100.10 port 60002 ssh2
+Nov 23 12:00:40 server1 sshd[14003]: Failed password for invalid user test from 198.51.100.10 port 60003 ssh2
+Nov 23 12:01:00 server1 sshd[14004]: Failed password for invalid user test from 198.51.100.10 port 60004 ssh2
+Nov 23 12:01:20 server1 sshd[14005]: Failed password for invalid user test from 198.51.100.10 port 60005 ssh2
+Nov 23 12:01:40 server1 sshd[14006]: Failed password for invalid user test from 198.51.100.10 port 60006 ssh2
+
+Nov 23 13:10:55 server1 sshd[15001]: Accepted password for user2 from 10.0.0.5 port 40001 ssh2
+Nov 23 13:20:15 server1 sshd[15002]: Accepted password for user2 from 10.0.0.5 port 40002 ssh2
