@@ -1,5 +1,8 @@
 # Ignore large raw datasets
 data/raw/
+
+# ignore pdf
 *.pdf
-personal_notes/sample_read.txt
-personal_notes/clf-log-entry.pdf
+
+# Ignore everything in personal_notes
+personal_notes/
