@@ -1,3 +1,5 @@
 # Ignore large raw datasets
 data/raw/
-sample_read.txt
+*.pdf
+personal_notes/sample_read.txt
+personal_notes/clf-log-entry.pdf
