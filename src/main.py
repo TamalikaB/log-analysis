@@ -7,6 +7,12 @@ client_counts = {}
 client_4xx_counts = {}
 client_403_counts = {}
 client_404_counts = {}
+request_counts = {}
+path_counts = {}
+path_404_counts = {}
+path_403_counts = {}
+hour_counts = {}
+hour_4xx_counts = {}
 
 def parse_log_line(line):
     match = re.search(
@@ -37,9 +43,26 @@ with open("data/raw/nasa_aug95.log", "r", encoding="latin-1") as file:
         else:
             status = result["status"]
             client = result["client"]
+            request = result["request"]
+            timestamp = result["timestamp"]
 
             client_counts[client] = client_counts.get(client, 0) + 1
             status_counts[status] = status_counts.get(status, 0) + 1
+
+            hour = timestamp[12:14]
+            hour_counts[hour] = hour_counts.get(hour, 0) + 1
+
+            request_counts[request] = request_counts.get(request,0) + 1
+
+            parts = request.split()
+            if len(parts) >= 2:
+                path = parts[1]
+                path_counts[path] = path_counts.get(path, 0) + 1
+
+                if status == "404":
+                    path_404_counts[path] = path_404_counts.get(path, 0) + 1
+                if status == "403":
+                    path_403_counts[path] = path_403_counts.get(path, 0) + 1
 
             category = status[0] + "xx"
             category_counts[category] = category_counts.get(category, 0) + 1
@@ -52,6 +75,9 @@ with open("data/raw/nasa_aug95.log", "r", encoding="latin-1") as file:
 
             if status == "404":
                 client_404_counts[client] = client_404_counts.get(client, 0) + 1
+
+            if status.startswith("4"):
+                hour_4xx_counts[hour] = hour_4xx_counts.get(hour, 0) + 1
 
 print(category_counts)
 
@@ -97,13 +123,6 @@ for client, total_requests, errors, error_rate in sorted(
         f"| Error rate: {error_rate:.2f}%"
     )
 
-clients_20_or_more = 0
-
-for client, requests in client_counts.items():
-    if requests >= 20:
-        clients_20_or_more += 1
-
-print("Clients with at least 20 requests:", clients_20_or_more)
 
 print("\nClients generating 403 responses:")
 
@@ -125,3 +144,63 @@ for client, count in sorted(
     reverse=True
 )[:10]:
     print(client, ":", count)
+
+print("\nTop 10 requested resources:")
+
+for request, count in sorted(
+    request_counts.items(),
+    key=lambda item: item[1],
+    reverse=True
+)[:10]:
+    print(request, ":", count)
+
+print("\nTop 10 requested paths:")
+
+for path, count in sorted(
+    path_counts.items(),
+    key=lambda item: item[1],
+    reverse=True
+)[:10]:
+    print(path, ":", count)
+
+print("\nTop 10 paths generating 404 responses:")
+
+for path, count in sorted(
+    path_404_counts.items(),
+    key=lambda item: item[1],
+    reverse=True
+)[:10]:
+    print(path, ":", count)
+
+print("\nTop 10 paths generating 403 responses:")
+
+for path, count in sorted(
+    path_403_counts.items(),
+    key=lambda item: item[1],
+    reverse=True
+)[:10]:
+    print(path, ":", count)
+
+print("\nRequests by hour:")
+
+for hour, count in sorted(hour_counts.items()):
+    print(hour, ":", count)
+
+print("\n4xx errors by hour:")
+
+for hour, count in sorted(hour_4xx_counts.items()):
+    print(hour, ":", count)
+
+print("\n4xx error rate by hour:")
+
+for hour in sorted(hour_counts):
+    total_requests = hour_counts[hour]
+    errors = hour_4xx_counts.get(hour, 0)
+    error_rate = (errors / total_requests) * 100
+
+    print(
+        hour,
+        "| Requests:", total_requests,
+        "| 4xx:", errors,
+        f"| Error rate: {error_rate:.2f}%"
+    )
