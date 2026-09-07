@@ -1,4 +1,10 @@
 import re
+import csv
+from detections import (
+    detect_high_error_clients,
+    detect_excessive_404_clients,
+    detect_excessive_403_clients
+)
 
 invalid_count = 0
 status_counts = {}
@@ -13,6 +19,7 @@ path_404_counts = {}
 path_403_counts = {}
 hour_counts = {}
 hour_4xx_counts = {}
+client_hour_4xx_counts = {}
 
 def parse_log_line(line):
     match = re.search(
@@ -70,6 +77,10 @@ with open("data/raw/nasa_aug95.log", "r", encoding="latin-1") as file:
             if status.startswith("4"):
                 client_4xx_counts[client] = client_4xx_counts.get(client, 0) + 1
 
+                client_hour_4xx_counts[(client, hour)] = (
+                    client_hour_4xx_counts.get((client, hour), 0) + 1
+                )
+
             if status == "403":
                 client_403_counts[client] = client_403_counts.get(client, 0) + 1
 
@@ -78,7 +89,8 @@ with open("data/raw/nasa_aug95.log", "r", encoding="latin-1") as file:
 
             if status.startswith("4"):
                 hour_4xx_counts[hour] = hour_4xx_counts.get(hour, 0) + 1
-
+                
+            
 print(category_counts)
 
 total = sum(status_counts.values())
@@ -132,9 +144,6 @@ for client, count in sorted(
     reverse=True
 )[:10]:
     print(client, ":", count)
-
-if status == "404":
-    client_404_counts[client] = client_404_counts.get(client, 0) + 1
 
 print("\nTop 10 clients generating 404 responses:")
 
@@ -204,3 +213,104 @@ for hour in sorted(hour_counts):
         "| 4xx:", errors,
         f"| Error rate: {error_rate:.2f}%"
     )
+
+suspicious_clients = detect_high_error_clients(
+    client_counts,
+    client_4xx_counts
+)
+
+print("\nSuspicious clients:")
+
+for client, total, errors, rate, severity in suspicious_clients:
+    print(
+        client,
+        "| Requests:", total,
+        "| 4xx:", errors,
+        f"| Error rate: {rate:.2f}%",
+        "| Severity:", severity
+    )
+
+print("\nPeak 4xx hour for suspicious clients:")
+
+for client, total, errors, rate, severity in suspicious_clients:
+    client_hours = {
+        hour: count
+        for (client_name, hour), count in client_hour_4xx_counts.items()
+        if client_name == client
+    }
+
+    client_hours = {
+    hour: count
+    for (client_name, hour), count in client_hour_4xx_counts.items()
+        if client_name == client
+    }
+
+    peak_hour = max(client_hours, key=client_hours.get)
+    peak_errors = client_hours[peak_hour]
+
+    print(
+        client,
+        "| Peak hour:", peak_hour,
+        "| 4xx errors:", peak_errors,
+        "| Severity:", severity
+    )
+
+excessive_404_clients = detect_excessive_404_clients(
+    client_404_counts
+)
+
+print("\nClients with excessive 404 responses:")
+
+for client, errors in excessive_404_clients:
+    print(
+        client,
+        "| 404 errors:", errors
+    )
+
+excessive_403_clients = detect_excessive_403_clients(
+    client_403_counts
+)
+
+print("\nClients with excessive 403 responses:")
+
+for client, errors in excessive_403_clients:
+    print(
+        client,
+        "| 403 errors:", errors
+    )
+
+with open("reports/security_alerts.csv", "w", newline="", encoding="utf-8") as file:
+    writer = csv.writer(file)
+
+    writer.writerow([
+        "Client",
+        "Detection",
+        "Details",
+        "Severity",
+        "Peak 4xx Hour"
+    ])
+
+    for client, total, errors, rate, severity in suspicious_clients:
+        writer.writerow([
+            client,
+            "High 4xx Error Rate",
+            f"{errors} 4xx errors out of {total} requests ({rate:.2f}%)",
+            severity,
+            peak_hour
+    ])
+
+    for client, errors in excessive_404_clients:
+        writer.writerow([
+            client,
+            "Excessive 404 Responses",
+            f"{errors} 404 responses",
+            "MEDIUM"
+        ])
+
+    for client, errors in excessive_403_clients:
+        writer.writerow([
+            client,
+            "Excessive 403 Responses",
+            f"{errors} 403 responses",
+            "HIGH"
+        ])

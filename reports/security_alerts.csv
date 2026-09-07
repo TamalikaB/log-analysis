@@ -1,0 +1,66 @@
+Client,Detection,Details,Severity,Peak 4xx Hour
+ts8-1.westwood.ts.ucla.edu,High 4xx Error Rate,37 4xx errors out of 37 requests (100.00%),CRITICAL,22
+nexus.mlckew.edu.au,High 4xx Error Rate,37 4xx errors out of 55 requests (67.27%),MEDIUM,22
+ix-atl10-08.ix.netcom.com,High 4xx Error Rate,16 4xx errors out of 25 requests (64.00%),MEDIUM,22
+msp1-16.nas.mr.net,High 4xx Error Rate,20 4xx errors out of 20 requests (100.00%),CRITICAL,22
+203.13.168.17,High 4xx Error Rate,25 4xx errors out of 25 requests (100.00%),CRITICAL,22
+onramp2-9.onr.com,High 4xx Error Rate,22 4xx errors out of 22 requests (100.00%),CRITICAL,22
+dialup551.chicago.mci.net,High 4xx Error Rate,18 4xx errors out of 24 requests (75.00%),HIGH,22
+203.13.168.24,High 4xx Error Rate,25 4xx errors out of 36 requests (69.44%),MEDIUM,22
+198.40.25.102.sap2.artic.edu,High 4xx Error Rate,21 4xx errors out of 21 requests (100.00%),CRITICAL,22
+crl5.crl.com,High 4xx Error Rate,23 4xx errors out of 41 requests (56.10%),MEDIUM,22
+dialup539.washington.mci.net,High 4xx Error Rate,12 4xx errors out of 22 requests (54.55%),MEDIUM,22
+rserio.charm.net,High 4xx Error Rate,15 4xx errors out of 21 requests (71.43%),HIGH,22
+ix-ir14-21.ix.netcom.com,High 4xx Error Rate,14 4xx errors out of 20 requests (70.00%),HIGH,22
+163.135.192.101,High 4xx Error Rate,25 4xx errors out of 46 requests (54.35%),MEDIUM,22
+tty18-23.swipnet.se,High 4xx Error Rate,23 4xx errors out of 30 requests (76.67%),HIGH,22
+dialip-217.den.mmc.com,High 4xx Error Rate,62 4xx errors out of 111 requests (55.86%),MEDIUM,22
+user36.znet.com,High 4xx Error Rate,25 4xx errors out of 30 requests (83.33%),HIGH,22
+ts8-1.westwood.ts.ucla.edu,Excessive 404 Responses,37 404 responses,MEDIUM
+nexus.mlckew.edu.au,Excessive 404 Responses,37 404 responses,MEDIUM
+piweba3y.prodigy.com,Excessive 404 Responses,47 404 responses,MEDIUM
+www-relay.pa-x.dec.com,Excessive 404 Responses,20 404 responses,MEDIUM
+204.62.245.32,Excessive 404 Responses,37 404 responses,MEDIUM
+piweba1y.prodigy.com,Excessive 404 Responses,22 404 responses,MEDIUM
+www-c4.proxy.aol.com,Excessive 404 Responses,32 404 responses,MEDIUM
+gn2.getnet.com,Excessive 404 Responses,20 404 responses,MEDIUM
+www-d4.proxy.aol.com,Excessive 404 Responses,30 404 responses,MEDIUM
+piweba4y.prodigy.com,Excessive 404 Responses,30 404 responses,MEDIUM
+www-d2.proxy.aol.com,Excessive 404 Responses,26 404 responses,MEDIUM
+piweba5y.prodigy.com,Excessive 404 Responses,31 404 responses,MEDIUM
+gw2.att.com,Excessive 404 Responses,21 404 responses,MEDIUM
+www-d1.proxy.aol.com,Excessive 404 Responses,23 404 responses,MEDIUM
+scooter.pa-x.dec.com,Excessive 404 Responses,35 404 responses,MEDIUM
+msp1-16.nas.mr.net,Excessive 404 Responses,20 404 responses,MEDIUM
+203.13.168.17,Excessive 404 Responses,25 404 responses,MEDIUM
+onramp2-9.onr.com,Excessive 404 Responses,22 404 responses,MEDIUM
+www-c2.proxy.aol.com,Excessive 404 Responses,23 404 responses,MEDIUM
+maz3.maz.net,Excessive 404 Responses,39 404 responses,MEDIUM
+203.13.168.24,Excessive 404 Responses,25 404 responses,MEDIUM
+198.40.25.102.sap2.artic.edu,Excessive 404 Responses,21 404 responses,MEDIUM
+crl5.crl.com,Excessive 404 Responses,23 404 responses,MEDIUM
+piweba2y.prodigy.com,Excessive 404 Responses,21 404 responses,MEDIUM
+spica.sci.isas.ac.jp,Excessive 404 Responses,27 404 responses,MEDIUM
+internet-gw.watson.ibm.com,Excessive 404 Responses,29 404 responses,MEDIUM
+163.206.104.34,Excessive 404 Responses,28 404 responses,MEDIUM
+intgate.raleigh.ibm.com,Excessive 404 Responses,21 404 responses,MEDIUM
+slip145-189.ut.nl.ibm.net,Excessive 404 Responses,22 404 responses,MEDIUM
+m38-370-9.mit.edu,Excessive 404 Responses,37 404 responses,MEDIUM
+gate.barr.com,Excessive 404 Responses,38 404 responses,MEDIUM
+155.148.25.4,Excessive 404 Responses,44 404 responses,MEDIUM
+unidata.com,Excessive 404 Responses,28 404 responses,MEDIUM
+reddragon.ksc.nasa.gov,Excessive 404 Responses,33 404 responses,MEDIUM
+153.78.49.245,Excessive 404 Responses,21 404 responses,MEDIUM
+dialip-217.den.mmc.com,Excessive 404 Responses,62 404 responses,MEDIUM
+dialup539.washington.mci.net,Excessive 403 Responses,12 403 responses,HIGH
+foxlake.library.nwu.edu,Excessive 403 Responses,9 403 responses,HIGH
+rserio.charm.net,Excessive 403 Responses,12 403 responses,HIGH
+pparviee.rautaruukki.fi,Excessive 403 Responses,5 403 responses,HIGH
+192.231.202.216,Excessive 403 Responses,5 403 responses,HIGH
+163.135.192.101,Excessive 403 Responses,23 403 responses,HIGH
+erigate.ericsson.se,Excessive 403 Responses,6 403 responses,HIGH
+bass.hooked.net,Excessive 403 Responses,18 403 responses,HIGH
+tty18-23.swipnet.se,Excessive 403 Responses,21 403 responses,HIGH
+205.139.35.43,Excessive 403 Responses,5 403 responses,HIGH
+quasar.ed.niigata-u.ac.jp,Excessive 403 Responses,11 403 responses,HIGH
+user36.znet.com,Excessive 403 Responses,21 403 responses,HIGH
